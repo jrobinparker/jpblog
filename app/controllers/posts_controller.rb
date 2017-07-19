@@ -1,8 +1,9 @@
 class PostsController < ApplicationController
+  before_action :authenticate_admin!, except: [:index, :show]
   before_action :find_post, only: [:edit, :update, :show, :delete]
 
   def index
-    @posts = Post.all?
+    @posts = Post.all
   end
 
   def new
